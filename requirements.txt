@@ -1,0 +1,5 @@
+langgraph>=0.6.0
+langchain>=0.3.0
+langchain-ollama>=0.3.0
+psycopg[binary]>=3.2.0
+python-dotenv>=1.0.1

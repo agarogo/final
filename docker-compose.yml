@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: onefile_pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tasks_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - onefile_pg_data:/var/lib/postgresql/data
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: onefile_ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - onefile_ollama_data:/root/.ollama
+    command: ["serve"]
+
+volumes:
+  onefile_pg_data:
+  onefile_ollama_data:
